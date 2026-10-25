@@ -1,7 +1,7 @@
 import socket
 import json
 
-from bot.BotProcess import startBotProcess
+#from bot.BotProcess import startBotProcess
 from independent_modules.ProxyChecker import ProxyChecker
 from player.Player import Player
 from independent_modules import PlayerList

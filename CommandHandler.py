@@ -2,7 +2,7 @@ import threading
 
 import PingRequest
 from PortScanner import PortScanner
-from bot import ConnectionStarter
+#from bot import ConnectionStarter
 from independent_modules.ProxyChecker import ProxyChecker
 from player import Player
 from independent_modules.PlayerList import PlayerList
@@ -53,6 +53,8 @@ def handleCommand(gracz: Player.Player, command: str):
             elif words[1] == "netty1":
                 gracz.joiner.crasher.netty_varint(socket=gracz.joiner.socket, packet_count=packet_count)
                 gracz.sendPacket(ChatMessagePacket(message="Proboje crashowac serwer...", sender=None, bold="true", color="green"))
+            elif words[1] == "creative":
+                gracz.joiner.crasher.creative_crasher(socket=gracz.joiner.socket, packet_count=packet_count)
             else:
                 gracz.sendPacket(ChatMessagePacket(message="Nie ma takiej metody", sender=None, bold="true", color="red"))
 
@@ -124,7 +126,7 @@ def handleCommand(gracz: Player.Player, command: str):
             gracz.easySendPacket(
                 ChatMessagePacket(message="Nie jestes polaczony z zadnym serwerem!", bold="true", color="red", sender=None))
     elif command.startswith(",joinbot"): # ",joinbot (ip) (port) (nick) (SOCKS5/none) (liczba)
-        if len(words) == 6 and words[2].isnumeric() and words[4].lower() is "none" or "socks5" and words[5].isnumeric():
+        if len(words) == 6 and words[2].isnumeric() and words[4].lower() == "none" or "socks5" and words[5].isnumeric():
             ip = words[1]
             port = int(words[2])
             nick = words[3]
@@ -140,7 +142,6 @@ def handleCommand(gracz: Player.Player, command: str):
             ConnectionStarter.startConnection(boty)
         else:
             gracz.sendPacket(ChatMessagePacket("Poprawne uzycie: ,joinbot (ip) (port) (nick) (SOCKS5/none)",sender=None, bold="true", color="red"))
-
 
     else:
         gracz.sendPacket(ChatMessagePacket(message="Nieznana komenda! ,help pokazuje komendy", sender=None, bold="true", color="red"))

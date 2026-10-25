@@ -1,6 +1,6 @@
 # Custom Minecraft Protocol Proxy & Testing Tool
 
-A lightweight, custom-built Minecraft packet proxy designed to act as a middle-man server between the client and target servers. Built to analyze network traffic, inspect protocol handling, and perform security testing against server infrastructure.
+A lightweight, custom-built Minecraft packet proxy written without any external libraries designed to act as a middle-man server between the client and target servers. Built to analyze network traffic, inspect protocol handling, and perform security testing against server infrastructure.
 
 > **Note:** This is an experimental project written using a "Just-In-Time learning" approach to explore low-level network programming, packet manipulation, and the Minecraft protocol.
 

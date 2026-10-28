@@ -1,7 +1,6 @@
 class PacketUtils:
     @staticmethod
     def read_varint_from_buffer(bufer):
-        """Pomocnicza funkcja czytająca VarInt z początku self.buffer"""
         num_read = 0
         result = 0
         while True:
@@ -22,7 +21,6 @@ class PacketUtils:
         return result, num_read
     @staticmethod
     def read_varint_from_bytes(data_bytes, offset=0):
-        """Czyta VarInt z dowolnego obiektubytes/bytearray od wskazanego offsetu"""
         num_read = 0
         result = 0
 

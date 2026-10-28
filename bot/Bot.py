@@ -18,6 +18,7 @@ class Bot:
         self.nick = nick
         self.bot_states = BotState()
         self.bot_state = self.bot_states.HANDSHAKE
+        self.bot_compression_level = None
 
         Bots.all_bots.append(self)
 

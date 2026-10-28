@@ -3,6 +3,7 @@ import socket
 import time
 
 from bot import BotsDataReceiver, Bots
+from bot.Bot import Bot
 #from bot.Bot import Bot,
 from client_packets.ClientHandshakePacket import ClientHandshakePacket
 from client_packets.ClientLoginStartPacket import ClientLoginStartPacket

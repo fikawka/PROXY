@@ -1,9 +1,9 @@
 import time
 
 from PacketUtils import PacketUtils
-from bot import Bots
+from bot import Bots, BotReceivedPacketHandler
 
-active_bots = []
+active_bots = Bots.all_active_bots
 buffer = bytearray()
 def receive_packets():
     while True:
@@ -23,13 +23,11 @@ def receive_packets():
                 if len(buffer) < full_packet_length:
                     continue
                 packet_data = buffer[:full_packet_length]
-                HandleReceivedPacket
+                BotReceivedPacketHandler.handle_packet(packet_data, active_bots[i])
                 del buffer[:full_packet_length]
 
-
-
             except Exception as e:
-                Bots.remove_active_bot(active_bots)
+                Bots.remove_bot(active_bots[i])
 
                 pass
 

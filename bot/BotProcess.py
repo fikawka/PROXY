@@ -1,7 +1,7 @@
 import multiprocessing
 from concurrent.futures import ThreadPoolExecutor
 
-from bot.BotsDataReceiver import BotsDataReceiver
+import BotsDataReceiver
 
 
 def startThreads():
